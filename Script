@@ -1,0 +1,33 @@
+StarterGui
+└── FlyUI
+    └── FlyButton
+        └── LocalScript-- Variables
+local button = script.Parent
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+local flying = false
+local bodyVelocity = nil
+local flySpeed = 50 -- Adjust for desired speed
+
+-- Toggle fly function
+local function toggleFly()
+    if flying then
+        flying = false
+        if bodyVelocity then
+            bodyVelocity:Destroy()
+        end
+        humanoid.PlatformStand = false
+        button.Text = "Fly"
+    else
+        flying = true
+        humanoid.PlatformStand = true
+        bodyVelocity = Instance.new("BodyVelocity", character.PrimaryPart)
+        bodyVelocity.MaxForce = Vector3.new(400000, 400000, 400000)
+        bodyVelocity.Velocity = Vector3.zero
+        button.Text = "Stop Flying"
+    end
+end
+
+-- Connect button click
+button.MouseButton1Click:Connect(toggleFly)
