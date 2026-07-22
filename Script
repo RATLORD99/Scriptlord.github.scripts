@@ -13,7 +13,8 @@ local Window = Rayfield:CreateWindow({
         FileName = "BloxFruitsKey",
         SaveKey = true,
         GrabKeyFromSite = true,
-        Key = "https://lootdest.org/s?osJpwaT2",
+        Key = "kingfruits",
+        get key = "https://lootdest.org/s?osJpwaT2" 
     },
     DiscordInvite = "",
     Theme = "Default",
